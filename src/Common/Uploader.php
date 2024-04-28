@@ -1,5 +1,6 @@
 <?php
 
+// Comment!
 class Uploader {
     private $pdo;
     private $uploadDir;
