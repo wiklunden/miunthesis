@@ -1,0 +1,12 @@
+27-04-2024:
+This is the beginning of the 'file security scan' project. I will be programming this web application in PHP and JavaScript.
+The purpose of this project is to be able to upload code files and be provided tips for implementing missing security measures.
+
+Added composer and phpdotenv to securely store database credentials. Created a new class named `Database` for handling database
+operations.
+
+28-04-2024:
+Implemented file upload functionalities.
+Created a new class named `Uploader` for handling file uploads, along with a new table named `files` for storing upload information.
+For uploading a file, a new `Uploader` instance is created in `upload_file.php` which establishes a connection to the database and
+uploads file to the `uploads/` directory.
