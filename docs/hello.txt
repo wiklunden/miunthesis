@@ -10,3 +10,10 @@ Implemented file upload functionalities.
 Created a new class named `Uploader` for handling file uploads, along with a new table named `files` for storing upload information.
 For uploading a file, a new `Uploader` instance is created in `upload_file.php` which establishes a connection to the database and
 uploads file to the `uploads/` directory.
+
+02-05-2024:
+Tried implementing PHPParser with node visitors for traversing an AST (Abstract Syntax Tree), looking for words that are required for
+correctly implementing prepared statements. This did not work.
+
+03-05-2024:
+Attempting to implement tokens instead (token_get_all()) to do something similar to PHPParser.

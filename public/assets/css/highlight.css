@@ -1,0 +1,53 @@
+pre {
+	margin: 0;
+}
+
+pre code.hljs {
+	width: 50%;
+	max-height: 800px;
+	padding-top: 10px !important;
+	padding-bottom: 20px !important;
+	margin: 0 auto;
+	border: 1px solid var(--highlight);
+	border-radius: 5px;
+}
+
+#results code {
+	width: 80% !important;
+}
+
+#results .hljs-number {
+	text-align: right;
+	margin-right: 10px;
+}
+
+.hljs {
+	background: var(--highlight-dark) !important;
+	color: var(--code-lightblue) !important;
+	font-size: 12px;
+	padding-right: 50px !important;
+}
+
+.hljs-tag, .hljs-name, .hljs-attr {
+	color: var(--code-lightblue) !important;
+}
+
+.hljs-built_in, .hljs-regexp {
+	color: var(--code-orange) !important;
+}
+
+.hljs-string, .hljs-title {
+	color: var(--primary) !important;
+}
+
+.hljs-variable {
+	color: var(--code-purple) !important;
+}
+
+.hljs-number, .hljs-literal {
+	color: var(--code-pink) !important;
+}
+
+.hljs-punctuation, .hljs-selector-id, .hljs-meta {
+	color: var(--code-blue) !important;
+}

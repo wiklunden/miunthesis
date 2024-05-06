@@ -1,25 +1,42 @@
 :root {
     --background: #0e0e0e;
+    --highlight: #4d4d4d;
+    --highlight-light: #6b6b6b;
+    --highlight-dark: #161616;
     --primary: #d33258;
+    --primary-dark: #991d3a;
+    --dark-blue: #182525;
     --secondary: rgb(207, 174, 113);
+
+    --code-purple: #8d6acf;
+    --code-pink: #ec0e97;
+    --code-blue: #4792e7;
+    --code-lightblue: #dce3e9;
+    --code-orange: #d86915;
+
+    --default-font: "Montserrat", sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--background);
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--default-font);
     font-weight: 400;
+}
+
+h3 {
+    margin: 10px 0;
 }
 
 #container {
     width: 100%;
-    height: 100vh;
-    background-color: var(--background);
+    padding-bottom: 200px;
 }

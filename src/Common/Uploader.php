@@ -35,16 +35,23 @@ class Uploader {
             echo 'File was not uploaded.';
         } else {
             if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-                echo 'Successfully uploaded ' . htmlspecialchars(basename($file['name'])) . '.';
-
+                $name = basename($file['name']);
+                $url = 'uploads/' . $name;
                 $date = date('Y-m-d H:i:s');
+                $fileSize = $file['size'];
+                
                 // Adds new entry to database
-                $stmt = $this->pdo->prepare('INSERT INTO files(url, file_type, upload_date) VALUES(:url, :file_type, :upload_date)');
+                $stmt = $this->pdo->prepare('INSERT INTO files(name, url, file_type, file_size, upload_date) VALUES(:name, :url, :file_type, :file_size, :upload_date)');
                 $stmt->execute([
-                    'url' => $targetFile,
+                    'name' => $name,
+                    'url' => $url,
                     'file_type' => $fileType,
+                    'file_size' => $fileSize,
                     'upload_date' => $date,
                 ]);
+
+                header('Location: ../public/scan.php');
+                exit;
             } else {
                 echo 'Error uploading file.';
             }

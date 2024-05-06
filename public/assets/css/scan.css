@@ -1,3 +1,126 @@
 form {
     color: white;
 }
+
+#centered {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#sort-method {
+    width: 300px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#sort-method button {
+    background-color: transparent;
+    border: none;
+    color: gray;
+    cursor: pointer;
+}
+
+#sort-method button:hover {
+    text-decoration: underline;
+}
+
+#sort-method button:first-child {
+    margin-right: auto;
+}
+
+#sort-method button:nth-child(2) {
+    margin-right: 40px;
+}
+
+#uploaded-files {
+    margin: 0;
+    margin-top: 100px;
+    padding: 0;
+}
+
+#uploaded-files > h3 {
+    text-align: center;
+}
+
+#uploaded-files form:not(#sort-method) {
+    width: 400px;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--highlight);
+    cursor: pointer;
+    transition: .1s ease;
+}
+
+#uploaded-files form:not(#sort-method):hover {
+    background-color: var(--highlight-dark);
+}
+
+#uploaded-files form:not(#sort-method):last-child {
+    border-bottom: none;
+}
+
+#uploaded-files form li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    font-family: var(--default-font);
+    font-size: 14px;
+}
+
+.file-name {
+    margin-right: auto;
+}
+
+.file-type {
+    margin-right: 40px;
+}
+
+.file-size {
+    margin-right: 40px;
+}
+
+.remove-file-button, #upload-form button, #scan-button {
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    transition: .1s ease;
+}
+
+.remove-file-button {
+    background-color: var(--primary);
+}
+
+.remove-file-button:hover {
+    background-color: var(--primary-dark);
+}
+
+#selected-file {
+    margin-top: 100px;
+    padding-top: 10px;
+}
+
+#selected-file h3 {
+    display: none;
+    text-align: center;
+}
+
+#selected-file form {
+    width: fit-content;
+    display: none;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#scan-button {
+    padding: 6px 14px;
+    font-size: 16px;
+}

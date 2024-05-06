@@ -1,0 +1,17 @@
+.scan-section {
+	color: white;
+	display: flex;
+	flex-direction: column;
+	font-family: var(--default-font);
+	font-size: 14px;
+	gap: 5px;
+}
+
+.scan-section h4 {
+	font-size: 16px;
+	text-decoration: underline;
+}
+
+#results .stmt-warning {
+	color: var(--primary);
+}
