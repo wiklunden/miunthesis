@@ -19,6 +19,12 @@ if (isset($_SESSION['file-name'])) {
         <div id="content">
             <h2 id="directory">Home</h2>
         </div>
+
+        <div id="centered">
+            <form action="scan.php" method="post">
+                <button type="submit" id="scan-files-button">Scan files</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

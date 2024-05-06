@@ -18,3 +18,19 @@
 #directory a:hover {
     text-decoration: underline;
 }
+
+#scan-files-button {
+    background-color: var(--highlight-dark);
+    color: white;
+    border: 1px solid var(--highlight);
+    font-size: 24px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: .15s ease;
+}
+
+#scan-files-button:hover {
+    background-color: var(--background);
+    border-color: white;
+    color: var(--highlight);
+}

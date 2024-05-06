@@ -24,3 +24,5 @@ functions due to complications. When a file is being scanned, it is being loaded
 having its SQL functions checked. All results are returned to the backend script and are being sent to a session variable.
 After redirecting the user to 'scan_results.php', all results stored in the session variable are printed with the corresponding line
 numbers.
+
+Completed function for scanning for SQL injection.
