@@ -8,6 +8,8 @@ require_once('../src/Common/DatabaseFunctions.php');
 
 if (isset($_SESSION['file-name'])) {
     unset($_SESSION['file-name']);
+    unset($_SESSION['stmt-results']);
+    unset($_SESSION['sqli-results']);
 }
 
 ?>
@@ -17,7 +19,7 @@ if (isset($_SESSION['file-name'])) {
         <?php include('includes/nav.php'); ?>
 
         <div id="content">
-            <h2 id="directory"><a href="index.php">root</a> / Scan Files</h2>
+            <h2 id="directory"><a href="index.php">Home</a> / Scan Files</h2>
 
             <div id="centered">
                 <h3>Detects security risks and provides solutions.</h3>

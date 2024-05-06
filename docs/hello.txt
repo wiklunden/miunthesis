@@ -17,3 +17,10 @@ correctly implementing prepared statements. This did not work.
 
 03-05-2024:
 Attempting to implement tokens instead (token_get_all()) to do something similar to PHPParser.
+
+06-05-2024:
+Continued implementing tokenization for finding keywords related to prepared statements. Limiting my implementation to only scanning
+functions due to complications. When a file is being scanned, it is being loaded into the newly added class 'FileScanner' and is then
+having its SQL functions checked. All results are returned to the backend script and are being sent to a session variable.
+After redirecting the user to 'scan_results.php', all results stored in the session variable are printed with the corresponding line
+numbers.
