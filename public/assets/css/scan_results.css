@@ -31,3 +31,28 @@
 .suggestion {
 	color: var(--highlight-light);
 }
+
+.complexity-red,
+.complexity-orange,
+.complexity-yellow,
+.complexity-green {
+	padding: 4px 10px;
+	margin: 2px 0;
+}
+
+.complexity-red {
+	background-color: var(--primary);
+}
+
+.complexity-orange {
+	background-color: var(--code-orange);
+}
+
+.complexity-yellow {
+	background-color: var(--code-yellow);
+	color: var(--background);
+}
+
+.complexity-green {
+	background-color: var(--code-green);
+}

@@ -3,12 +3,7 @@
 session_start();
 
 include('includes/head.php');
-
-if (isset($_SESSION['file-name'])) {
-    unset($_SESSION['file-name']);
-    unset($_SESSION['stmt-results']);
-    unset($_SESSION['sqli-results']);
-}
+include('../config/unset_session_variables.php');
 
 ?>
 <body>

@@ -23,23 +23,38 @@ if (!isset($_SESSION['file-name'])) {
                 <?php
 					echo '<div id="results">';
 
+					// Prints results from SQL injection scan
 					if (isset($_SESSION['sqli-results']) && !empty($_SESSION['sqli-results'])) {
 						$sqliResults = $_SESSION['sqli-results'];
 
 						echo '<span class="scan-section">';
 						echo '<h4>SQL injection:</h4>';
-						foreach ($sqliResults as $res) {
-							echo $res;
+						foreach ($sqliResults as $result) {
+							echo $result;
 						}
 						echo '</span>';
 					}
 					
+					// Prints results from prepared statements scan
 					if (isset($_SESSION['stmt-results']) && !empty($_SESSION['stmt-results'])) {
 						$stmtResults = $_SESSION['stmt-results'];
 					
 						echo '<span class="scan-section">';
 						echo '<h4>Prepared statements:</h4>';
 						foreach ($stmtResults as $result) {
+							echo $result;
+						}
+						echo '</span>';
+					}
+
+					// Prints code complexity
+					echo empty($_SESSION['complexity']);
+					if (isset($_SESSION['complexity']) && !empty($_SESSION['complexity'])) {
+						$complexityResults = $_SESSION['complexity'];
+						
+						echo '<span class="scan-section">';
+						echo '<h4>Cyclomatic complexity:</h4>';
+						foreach ($complexityResults as $result) {
 							echo $result;
 						}
 						echo '</span>';

@@ -3,14 +3,9 @@
 session_start();
 
 include('includes/head.php');
+include('../config/unset_session_variables.php');
 require_once('../src/Common/Database.php');
 require_once('../src/Common/DatabaseFunctions.php');
-
-if (isset($_SESSION['file-name'])) {
-    unset($_SESSION['file-name']);
-    unset($_SESSION['stmt-results']);
-    unset($_SESSION['sqli-results']);
-}
 
 ?>
 

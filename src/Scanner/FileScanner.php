@@ -103,4 +103,60 @@ class FileScanner {
 
 		return $feedback;
 	}
+
+	private function calculateComplexity() {
+		$currentFunction = '';
+		$gettingFunctionName = false;
+		$functionLine = 0;
+		$complexity = 0;
+		$functionComplexities = [];
+
+		foreach ($this->tokens as $token) {
+			if (is_array($token)) {
+				if ($token[0] == T_FUNCTION) {
+					$gettingFunctionName = true;
+					$functionLine = $token[2];
+				} elseif ($gettingFunctionName && $token[0] == T_STRING) {
+					// Captures function name
+					$currentFunction = $token[1];
+					$gettingFunctionName = false;
+					$complexity = 0;
+					$functionComplexities[$currentFunction] = ['complexity' => $complexity, 'line' => $functionLine];
+				}
+			} elseif ($token == '{') {
+				if ($currentFunction) {
+					$complexity++;
+				}
+			} elseif ($token == '}') {
+				if ($currentFunction) {
+					$functionComplexities[$currentFunction]['complexity'] = $complexity;
+					$currentFunction = '';
+				}
+			}
+		}
+
+		return $functionComplexities;
+	}
+
+	public function getComplexityFeedback() {
+		$complexities = $this->calculateComplexity();
+		$feedback = [];
+
+		foreach ($complexities as $functionName => $details) {
+			$complexity = $details['complexity'];
+			$line = $details['line'];
+
+			if ($complexity > 50) {
+				$feedback[] = "<span class='complexity-red'>LINE $line: Function $functionName() has a very high complexity ($complexity). Consider refactoring.</span>";
+			} elseif ($complexity > 20) {
+				$feedback[] = "<span class='complexity-orange'>LINE $line: Function $functionName() has a high complexity ($complexity). Refactoring recommended.</span>";
+			} elseif ($complexity > 10) {
+				$feedback[] = "<span class='complexity-yellow'>LINE $line: Function $functionName() has moderate complexity ($complexity). Refactoring could be beneficial.</span>";
+			} else {
+				$feedback[] = "<span class='complexity-green'>LINE $line: Function $functionName() has low complexity ($complexity) and does not need refactoring.</span>";
+			}
+		}
+
+		return $feedback;
+	}
 }

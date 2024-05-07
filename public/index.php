@@ -3,12 +3,7 @@
 session_start();
 
 include('includes/head.php');
-
-if (isset($_SESSION['file-name'])) {
-    unset($_SESSION['file-name']);
-    unset($_SESSION['stmt-results']);
-    unset($_SESSION['sqli-results']);
-}
+include('../config/unset_session_variables.php');
 
 ?>
 
@@ -25,6 +20,8 @@ if (isset($_SESSION['file-name'])) {
                 <button type="submit" id="scan-files-button">Scan files</button>
             </form>
         </div>
+
+        <img id="fissc-big" src="assets/images/fissc-big.png" alt="FISSC image">
     </div>
 </body>
 </html>

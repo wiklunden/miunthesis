@@ -16,6 +16,7 @@ try {
     $scanner = new FileScanner($targetFile);
     $_SESSION['stmt-results'] = $scanner->checkPreparedStatements();
     $_SESSION['sqli-results'] = $scanner->checkSQLInjections();
+    $_SESSION['complexity'] = $scanner->getComplexityFeedback();
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
 }

@@ -34,3 +34,12 @@
     border-color: white;
     color: var(--highlight);
 }
+
+#fissc-big {
+    position: absolute;
+    width: 60%;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .1;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Security Scan (FSS)</title>
+    <title>File Security Scan (FISSC)</title>
     <link rel="stylesheet" href="assets/css/base_template.css">
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/nav.css">

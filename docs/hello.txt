@@ -1,28 +1,65 @@
-27-04-2024:
-This is the beginning of the 'file security scan' project. I will be programming this web application in PHP and JavaScript.
-The purpose of this project is to be able to upload code files and be provided tips for implementing missing security measures.
+28-03-2024:
+Implemented function for uploading files. I'm using Node.js and Express.js on the server-side
+for handling file uploads. Right now the app is able to read .txt-files containing HTML code
+and display it to the client-side. I'm having trouble with making a syntax highlighter for the
+uploaded code.
 
-Added composer and phpdotenv to securely store database credentials. Created a new class named `Database` for handling database
-operations.
+29-03-2024:
+Added 'highlight.js' (npm install highlight.js) to automate syntax highlighting. Added my own
+CSS to existing elements to customize the look. Added more accepted file types to the app (i.e.
+.js, .php, .xml etc.). Added 'vitals' section for displaying information like file size and
+programming language. Started implementing support for compressed files. Now able to upload ZIP
+archive, display each file and analyze file separately. Uses localStorage() to save files if
+page is refreshed. Reset button removes.
+
+30-03-2024:
+Removed support for PDFs. Fine-tuned system. Added error message for invalid file types.
+
+31-03-2024:
+Added navbar and more styling. Fixed with file handling.
+
+11-04-2024:
+Figured out I'm working with "linting". Started implementing ESLint.
+
+-----------------------------------------------------------------------------------------------
+
+Realised I was working on the wrong thing and unfortunately had to start over.
+
+-----------------------------------------------------------------------------------------------
+
+27-04-2024:
+This is the beginning of the 'file security scan' project. I will be programming this
+web application in PHP and JavaScript. The purpose of this project is to be able to
+upload code files and be provided tips for implementing missing security measures.
+
+Added composer and phpdotenv to securely store database credentials. Created a new class
+named `Database` for handling database operations.
 
 28-04-2024:
-Implemented file upload functionalities.
-Created a new class named `Uploader` for handling file uploads, along with a new table named `files` for storing upload information.
-For uploading a file, a new `Uploader` instance is created in `upload_file.php` which establishes a connection to the database and
-uploads file to the `uploads/` directory.
+Implemented file upload functionalities. Created a new class named `Uploader` for handling
+file uploads, along with a new table named `files` for storing upload information. For
+uploading a file, a new `Uploader` instance is created in `upload_file.php` which establishes
+a connection to the database and uploads file to the `uploads/` directory.
 
 02-05-2024:
-Tried implementing PHPParser with node visitors for traversing an AST (Abstract Syntax Tree), looking for words that are required for
-correctly implementing prepared statements. This did not work.
+Tried implementing PHPParser with node visitors for traversing an AST (Abstract Syntax Tree),
+looking for words that are required for correctly implementing prepared statements.
+This did not work.
 
 03-05-2024:
 Attempting to implement tokens instead (token_get_all()) to do something similar to PHPParser.
 
 06-05-2024:
-Continued implementing tokenization for finding keywords related to prepared statements. Limiting my implementation to only scanning
-functions due to complications. When a file is being scanned, it is being loaded into the newly added class 'FileScanner' and is then
-having its SQL functions checked. All results are returned to the backend script and are being sent to a session variable.
-After redirecting the user to 'scan_results.php', all results stored in the session variable are printed with the corresponding line
-numbers.
+Continued implementing tokenization for finding keywords related to prepared statements.
+Limiting my implementation to only scanning functions due to complications. When a file is
+being scanned, it is being loaded into the newly added class 'FileScanner' and is then having
+its SQL functions checked. All results are returned to the backend script and are being sent to
+a session variable. After redirecting the user to 'scan_results.php', all results stored in the
+session variable are printed with the corresponding line numbers.
 
 Completed function for scanning for SQL injection.
+
+07-05-2024:
+Fixed branding for project. New abbreviation is 'FISSC' instead of 'FSS'. Logo of simplistic,
+metallic fish bone. Started implementing calculation of cyclomatic complexity. Now provides the
+user with information regarding the cyclomatic complexity of each function in a code file.
