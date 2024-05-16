@@ -63,3 +63,9 @@ Completed function for scanning for SQL injection.
 Fixed branding for project. New abbreviation is 'FISSC' instead of 'FSS'. Logo of simplistic,
 metallic fish bone. Started implementing calculation of cyclomatic complexity. Now provides the
 user with information regarding the cyclomatic complexity of each function in a code file.
+
+-----------------------------------------------------------------------------------------------
+
+NOTES:
+Under "Measure", describe how I first implemented tokenization without scope. If first function
+was missing execute() but second had execute, it did not register it as an issue.

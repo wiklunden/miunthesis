@@ -57,4 +57,38 @@ class Uploader {
             }
         }
     }
+
+    public function getUploadedFiles($sortMethod, $sortType) {
+        $allowedSortColumns = ['name', 'file_type', 'file_size', 'upload_date'];
+        $allowedSortTypes = ['ASC', 'DESC'];
+    
+        if (!in_array($sortMethod, $allowedSortColumns)) {
+            header('Location: ../public/scan.php');
+            exit;
+        }
+    
+        if (!in_array($sortType, $allowedSortTypes)) {
+            header('Location: ../public/scan.php');
+            exit;
+        }
+    
+        $sql = "SELECT * FROM files ORDER BY $sortMethod $sortType";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    
+    public function getFileById($id) {
+        $stmt = $this->pdo->prepare('SELECT * FROM files WHERE id = :id');
+        $stmt->execute([ 'id' => $id ]);
+        return $stmt->fetch();
+    }
+    
+    public function removeFile($targetId) {
+        $file = $this->getFileById($targetId);
+        unlink('../' . $file['url']);
+    
+        $stmt = $this->pdo->prepare('DELETE FROM files WHERE id = :id');
+        $stmt->execute([ 'id' => $targetId ]);
+    }
 }

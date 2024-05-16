@@ -10,13 +10,12 @@ if (!isset($_POST['scan-file'])) {
 }
 
 $_SESSION['file-name'] = $_POST['scan-file'];
-$targetFile = '../uploads/' . $_POST['scan-file'];
 
 try {
-    $scanner = new FileScanner($targetFile);
+    $scanner = new FileScanner(('../uploads/' . $_POST['scan-file']));
     $_SESSION['stmt-results'] = $scanner->checkPreparedStatements();
     $_SESSION['sqli-results'] = $scanner->checkSQLInjections();
-    $_SESSION['complexity'] = $scanner->getComplexityFeedback();
+    $_SESSION['complexity'] = $scanner->checkComplexity();
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
 }

@@ -5,7 +5,7 @@ session_start();
 include('includes/head.php');
 include('../config/unset_session_variables.php');
 require_once('../src/Common/Database.php');
-require_once('../src/Common/DatabaseFunctions.php');
+require_once('../src/Common/Uploader.php');
 
 ?>
 
@@ -24,11 +24,11 @@ require_once('../src/Common/DatabaseFunctions.php');
                 </form>
 
                 <?php
-                    $db = new Database();
+                    $uploader = new Uploader(new Database());
 
                     $sortMethod = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'name';
                     $sortType = isset($_SESSION['sortType']) ? $_SESSION['sortType'] : 'ASC';
-                    $files = getUploadedFiles($db, $sortMethod, $sortType);
+                    $files = $uploader->getUploadedFiles($sortMethod, $sortType);
 
                     $sortSymbol = $_SESSION['sortType'] === 'ASC' ? '↑' : '↓';
 

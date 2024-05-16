@@ -19,7 +19,7 @@ if (!isset($_SESSION['file-name'])) {
             <h2 id="directory"><a href="index.php">Home</a> / <a href="scan.php">Scan Files</a> / Results</h2>
 
             <div id="centered">
-                <h3>Results from scanning <span style="color: var(--highlight-light);"><?= $_SESSION['file-name']; ?></span>:</h3>
+                <h3>Results from scanning <span style="color: var(--code-purple);"><?= $_SESSION['file-name']; ?></span>:</h3>
                 <?php
 					echo '<div id="results">';
 

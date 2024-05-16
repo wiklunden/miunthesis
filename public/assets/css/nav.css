@@ -9,7 +9,8 @@ nav {
 }
 
 nav img {
-    width: 150px;
+    width: 120px;
+    margin-bottom: -4px;
 }
 
 nav ul {

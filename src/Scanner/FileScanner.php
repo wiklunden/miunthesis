@@ -74,12 +74,10 @@ class FileScanner {
 					$collectedSQL .= $token;
 				}
 				
+				// A found dollarsign ($) indicates direct input of a variable
 				if ($token === ';') {
 					if (preg_match('/\$/', $collectedSQL)) {
-						$feedback[] = "<span class='warning'>
-						LINE $startLine: Potential SQL injection detected. Variable inclusion found in string: <span class='snippet'>$collectedSQL</span>
-						<span class='suggestion'>Fix: Use prepared statements to bind parameters.</span>
-						</span>";
+						$feedback[] = "<span class='warning'>LINE $startLine: Potential SQL injection detected. Variable inclusion found in string: <span class='snippet'>$collectedSQL</span></span>";
 					}
 					$collecting = false;
 					$collectedSQL = '';
@@ -99,6 +97,15 @@ class FileScanner {
 
 		if (empty($feedback)) {
 			$feedback[] = "<span>No risk of SQL injection detected.</span>";
+		} else {
+			$feedback[] = "<span class='suggestion'>
+			Tips:<br>
+			Use prepared statements to bind parameters.<br>
+			Example of replacing variable concatenation:<br>
+			Change <span class='snippet'>VALUES('. \$variable . ')'</span> to <span class='snippet'>VALUES(:variable)</span>.<br>
+			Execute the statement with <span class='snippet'>execute([ 'variable' => \$variable ])</span>.<br><br>
+			Read more about <a target='_blank' href='https://www.php.net/manual/en/mysqli.quickstart.prepared-statements.php'>prepared statements for PHP</a>.
+			</span>";
 		}
 
 		return $feedback;
@@ -138,23 +145,37 @@ class FileScanner {
 		return $functionComplexities;
 	}
 
-	public function getComplexityFeedback() {
+	public function checkComplexity() {
 		$complexities = $this->calculateComplexity();
+		$existsHighComplexities = false;
 		$feedback = [];
 
 		foreach ($complexities as $functionName => $details) {
 			$complexity = $details['complexity'];
 			$line = $details['line'];
 
-			if ($complexity > 50) {
-				$feedback[] = "<span class='complexity-red'>LINE $line: Function $functionName() has a very high complexity ($complexity). Consider refactoring.</span>";
+			if ($complexity > 10) {
+				$existsHighComplexities = true;
+				$feedback[] = "<span class='complexity-red'>LINE $line: Function $functionName() has a very high complexity ($complexity). A thorough review and redesign of code structure is highly recommended.</span>";
 			} elseif ($complexity > 20) {
-				$feedback[] = "<span class='complexity-orange'>LINE $line: Function $functionName() has a high complexity ($complexity). Refactoring recommended.</span>";
-			} elseif ($complexity > 10) {
-				$feedback[] = "<span class='complexity-yellow'>LINE $line: Function $functionName() has moderate complexity ($complexity). Refactoring could be beneficial.</span>";
+				$feedback[] = "<span class='complexity-orange'>LINE $line: Function $functionName() has a high complexity ($complexity). Refactoring recommended.</span>" .
+				"<span class='suggestion'>Tips: Reduce amount of nested loops.</span>";
+			} elseif ($complexity > 50) {
+				$feedback[] = "<span class='complexity-yellow'>LINE $line: Function $functionName() has moderate complexity ($complexity). Refactoring could be beneficial.</span>" .
+				"<span class='suggestion'>Tips: Reduce amount of nested loops.</span>";
 			} else {
 				$feedback[] = "<span class='complexity-green'>LINE $line: Function $functionName() has low complexity ($complexity) and does not need refactoring.</span>";
 			}
+		}
+
+		if ($existsHighComplexities) {
+			$feedback[] = "<span class='suggestion'>
+			Tips:<br>
+			Break the function into smaller, single-purpose functions.<br>
+			Remove code paths that do not affect the outcome.<br>
+			Move complex expressions into their own functions.<br><br>
+			Read more about <a target='_blank' href='https://linearb.io/blog/reduce-cyclomatic-complexity'>reducing cyclomatic complexity</a>.
+			</span>";
 		}
 
 		return $feedback;

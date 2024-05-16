@@ -4,16 +4,23 @@
 	flex-direction: column;
 	font-family: var(--default-font);
 	font-size: 14px;
+	background-color: rgb(20, 20, 20);
+	border-radius: 4px;
+	padding: 8px;
 	gap: 5px;
 }
 
 .scan-section:not(:last-child) {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 .scan-section h4 {
 	font-size: 16px;
 	text-decoration: underline;
+}
+
+#results {
+	max-width: 750px;
 }
 
 #results .warning {
@@ -24,6 +31,7 @@
 	display: block;
 	padding: 4px 10px;
 	margin: 2px 0;
+	font-weight: 500;
 	background-color: var(--primary-dark);
 	color: white;
 }
@@ -32,27 +40,27 @@
 	color: var(--highlight-light);
 }
 
-.complexity-red,
-.complexity-orange,
-.complexity-yellow,
-.complexity-green {
-	padding: 4px 10px;
-	margin: 2px 0;
-}
-
-.complexity-red {
-	background-color: var(--primary);
-}
-
-.complexity-orange {
-	background-color: var(--code-orange);
-}
-
-.complexity-yellow {
-	background-color: var(--code-yellow);
+.suggestion .snippet {
+	display: inline;
+	padding: 1px 4px;
+	font-size: 12px;
+	margin: 0;
+	background-color: var(--highlight-light);
 	color: var(--background);
 }
 
+.complexity-red {
+	color: var(--primary);
+}
+
+.complexity-orange {
+	color: var(--code-orange);
+}
+
+.complexity-yellow {
+	color: var(--code-yellow);
+}
+
 .complexity-green {
-	background-color: var(--code-green);
+	color: var(--code-green);
 }
